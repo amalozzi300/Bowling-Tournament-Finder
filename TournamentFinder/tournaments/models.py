@@ -15,6 +15,10 @@ class BowlingCenter(models.Model):
 
     def __str__(self):
         return self.center_name.title()
+    
+    class Meta:
+        verbose_name = 'Bowling Center'
+        ordering = ['state', 'center_name']
 
 class TournamentDirector(models.Model):
     first_name = models.CharField(max_length=64)
@@ -26,8 +30,20 @@ class TournamentDirector(models.Model):
     def __str__(self):
         return f'{self.first_name.title()} {self.last_name.title()}'
     
-class Tournament(models.Model):
+    class Meta:
+        verbose_name = 'Tournament Director'
+        order_by = ['first_name', 'last_name']
     
+class Tournament(models.Model):
+    tournament_name = models.CharField(max_length=128)
+    date = models.DateField()
+    start_time = models.TimeField()
 
     bowling_center = models.ForeignKey(BowlingCenter, on_delete=models.CASCADE)
     tournament_director = models.ForeignKey(TournamentDirector, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.tournament_name
+    
+    class Meta:
+        order_by = ['date', 'time']
