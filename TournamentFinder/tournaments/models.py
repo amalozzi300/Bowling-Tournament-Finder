@@ -32,7 +32,7 @@ class TournamentDirector(models.Model):
     
     class Meta:
         verbose_name = 'Tournament Director'
-        order_by = ['first_name', 'last_name']
+        ordering = ['first_name', 'last_name']
     
 class Tournament(models.Model):
     tournament_name = models.CharField(max_length=128)
@@ -46,4 +46,4 @@ class Tournament(models.Model):
         return self.tournament_name
     
     class Meta:
-        order_by = ['date', 'time']
+        ordering = ['date', 'start_time']
