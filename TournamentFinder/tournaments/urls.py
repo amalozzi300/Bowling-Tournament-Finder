@@ -4,5 +4,5 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('bowling-centers', views.bowling_centers, name='bowling_centers')
+    path('bowling-centers', views.BowlingCenterListView.as_view(), name='bowling-centers'),
 ]

@@ -6,8 +6,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 # Create your models here.
 class BowlingCenter(models.Model):
     center_name = models.CharField(max_length=75)
-    address_1 = models.CharField(max_length=128)
-    address_2 = models.CharField(max_length=128, blank=True)
+    address = models.CharField(max_length=128)
     city = models.CharField(max_length=64)
     state = USStateField()
     zip_code = USZipCodeField(max_length=5)
