@@ -24,7 +24,7 @@ class TournamentDirector(models.Model):
     last_name = models.CharField(max_length=64)
     email_address = models.EmailField(max_length=128)
     phone_number = PhoneNumberField()
-    profile_picture = models.ImageField(upload_to='images/', blank=True)
+    profile_picture = models.ImageField(upload_to='images', blank=True)
 
     def __str__(self):
         return f'{self.first_name.title()} {self.last_name.title()}'

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tournament Directors</title>
+        <style>
+            #tournament-directors {
+                border-collapse: collapse;
+                margin: 25px 0;
+                font-size: 0.9em;
+                font-family: sans-serif;
+                text-align: center;
+                min-width: 400px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            }
+            #tournament-directors thead tr {
+                background-color: #009879;
+                color: #ffffff;
+                text-align: left;
+            }
+            #tournament-directors th, #tournament-directors td {
+                padding: 12px 15px;
+            }
+            #tournament-directors tbody tr {
+                border-bottom: 1px solid #ddd;
+            }
+            #tournament-directors tbody tr:nth-of-type(even) {
+                background-color: #f3f3f3;
+            }
+            #tournament-directors tbody tr:last-of-type {
+                border-bottom: 2px solid #009879;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Tournament Directors</h1>    
+
+        <table id="tournament-directors">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email Address</th>
+                    <th>Phone Number</th>
+                    <th>Profile Picture</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for director in tournament_directors %}
+                </tr>
+                <tr>
+                    <td>{{ director.first_name }}</td>
+                    <td>{{ director.last_name }}</td>
+                    <td>{{ director.email_address }}</td>
+                    <td>{{ director.phone_number }}</td>
+                    <td>
+                        {% if director.profile_picture %}
+                        <img src='{{ director.profile_picture.url }}'>
+                        {% endif %}
+                    </td>
+                </tr>
+                    {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>

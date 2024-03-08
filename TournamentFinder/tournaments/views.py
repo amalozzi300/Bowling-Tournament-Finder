@@ -11,3 +11,8 @@ class BowlingCenterListView(ListView):
     model = BowlingCenter
     context_object_name = 'bowling_centers'
     template_name = 'tournaments/bowling_centers.html'
+
+class TournamentDirectorListView(ListView):
+    model = TournamentDirector
+    context_object_name = 'tournament_directors'
+    template_name = 'tournaments/tournament_directors.html'
