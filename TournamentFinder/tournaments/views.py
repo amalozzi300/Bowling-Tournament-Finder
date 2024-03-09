@@ -10,14 +10,14 @@ def home(request):
 class BowlingCenterListView(ListView):
     model = BowlingCenter
     context_object_name = 'bowling_centers'
-    template_name = 'tournaments/bowling_centers.html'
+    template_name = 'tournaments/bowling_centers/centers_list.html'
 
 class TournamentDirectorListView(ListView):
     model = TournamentDirector
     context_object_name = 'tournament_directors'
-    template_name = 'tournaments/tournament_directors.html'
+    template_name = 'tournaments/tournament_directors/directors_list.html'
 
 class TournamentListView(ListView):
     model = Tournament
     context_object_name = 'tournaments'
-    template_name = 'tournaments/tournaments.html'
+    template_name = 'tournaments/tournaments_list.html'

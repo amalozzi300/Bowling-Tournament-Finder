@@ -40,7 +40,6 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Date</th>
                     <th>Start Time</th>
                     <th>Location</th>
                     <th>Tournament Director</th>
@@ -52,8 +51,7 @@
                 </tr>
                 <tr>
                     <td>{{ tournament.tournament_name }}</td>
-                    <td>{{ tournament.date }}</td>
-                    <td>{{ tournament.start_time }} {{tournament.start_time.tzinfo }}</td>
+                    <td>{{ tournament.start_time }}</td>
                     <td>{{ tournament.bowling_center }}</td>
                     <td>{{ tournament.tournament_director }}</td>
                 </tr>

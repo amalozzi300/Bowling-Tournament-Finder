@@ -35,9 +35,7 @@ class TournamentDirector(models.Model):
     
 class Tournament(models.Model):
     tournament_name = models.CharField(max_length=128)
-    date = models.DateField()
-    start_time = models.TimeField()
-
+    start_time = models.DateTimeField()
     bowling_center = models.ForeignKey(BowlingCenter, on_delete=models.CASCADE)
     tournament_director = models.ForeignKey(TournamentDirector, on_delete=models.CASCADE)
 
@@ -45,4 +43,4 @@ class Tournament(models.Model):
         return self.tournament_name
     
     class Meta:
-        ordering = ['date', 'start_time']
+        ordering = ['start_time']
