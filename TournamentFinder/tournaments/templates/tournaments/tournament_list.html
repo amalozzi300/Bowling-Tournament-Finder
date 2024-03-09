@@ -43,6 +43,8 @@
                     <th>Start Time</th>
                     <th>Location</th>
                     <th>Tournament Director</th>
+                    <th>Tournament Flyer</th>
+                    <th>Tournament Website</th>
                 </tr>
             </thead>
             <tbody>
@@ -50,10 +52,22 @@
                     {% for tournament in tournaments %}
                 </tr>
                 <tr>
-                    <td>{{ tournament.tournament_name }}</td>
+                    <td>{{ tournament }}</td>
                     <td>{{ tournament.start_time }}</td>
                     <td>{{ tournament.bowling_center }}</td>
                     <td>{{ tournament.tournament_director }}</td>
+                    <td>
+                        {% if tournament.flyer %}
+                        <a href="{{ tournament.flyer.url }}" target="_blank">
+                            Click Here
+                        </a>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{{ tournament.website }}" target="_blank">
+                            {{ tournament.website }}
+                        </a>
+                    </td>
                 </tr>
                     {% endfor %}
             </tbody>
