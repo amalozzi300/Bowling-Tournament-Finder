@@ -15,6 +15,9 @@ class BowlingCenter(models.Model):
     def __str__(self):
         return self.center_name.title()
     
+    # def get_absolute_url(self):
+    #     return '/bowling-centers'
+    
     class Meta:
         verbose_name = 'Bowling Center'
         ordering = ['state', 'center_name']
@@ -29,6 +32,9 @@ class TournamentDirector(models.Model):
     def __str__(self):
         return f'{self.first_name.title()} {self.last_name.title()}'
     
+    # def get_absolute_url(self):
+    #     return '/tournament-directors'
+    
     class Meta:
         verbose_name = 'Tournament Director'
         ordering = ['first_name', 'last_name']
@@ -41,6 +47,9 @@ class Tournament(models.Model):
 
     def __str__(self):
         return self.tournament_name
+    
+    # def get_absolute_url(self):
+    #     return '/tournaments'
     
     class Meta:
         ordering = ['start_time']
