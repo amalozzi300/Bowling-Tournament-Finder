@@ -17,7 +17,6 @@
             #tournament-directors thead tr {
                 background-color: #009879;
                 color: #ffffff;
-                text-align: left;
             }
             #tournament-directors th, #tournament-directors td {
                 padding: 12px 15px;
@@ -40,8 +39,7 @@
         <table id="tournament-directors">
             <thead>
                 <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
+                    <th>Name</th>
                     <th>Email Address</th>
                     <th>Phone Number</th>
                     <th>Profile Picture</th>
@@ -52,8 +50,7 @@
                     {% for director in tournament_directors %}
                 </tr>
                 <tr>
-                    <td>{{ director.first_name }}</td>
-                    <td>{{ director.last_name }}</td>
+                    <td>{{ director }}</td>
                     <td>{{ director.email_address }}</td>
                     <td>{{ director.phone_number }}</td>
                     <td>

@@ -3,9 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Bowling Centers</title>
+        <title>Tournaments</title>
         <style>
-            #bowling-centers {
+            #tournaments {
                 border-collapse: collapse;
                 margin: 25px 0;
                 font-size: 0.9em;
@@ -14,50 +14,48 @@
                 min-width: 400px;
                 box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
             }
-            #bowling-centers thead tr {
+            #tournaments thead tr {
                 background-color: #009879;
                 color: #ffffff;
             }
-            #bowling-centers th, #bowling-centers td {
+            #tournaments th, #tournaments td {
                 padding: 12px 15px;
             }
-            #bowling-centers tbody tr {
+            #tournaments tbody tr {
                 border-bottom: 1px solid #ddd;
             }
-            #bowling-centers tbody tr:nth-of-type(even) {
+            #tournaments tbody tr:nth-of-type(even) {
                 background-color: #f3f3f3;
             }
-            #bowling-centers tbody tr:last-of-type {
+            #tournaments tbody tr:last-of-type {
                 border-bottom: 2px solid #009879;
             }
         </style>
     </head>
 
     <body>
-        <h1>Bowling Centers</h1>    
+        <h1>Tournaments</h1>    
 
-        <table id="bowling-centers">
+        <table id="tournaments">
             <thead>
                 <tr>
-                    <th>Center Name</th>
-                    <th>Address</th>
-                    <th>City</th>
-                    <th>State</th>
-                    <th>Zip Code</th>
-                    <th>Phone Number</th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Start Time</th>
+                    <th>Location</th>
+                    <th>Tournament Director</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    {% for center in bowling_centers %}
+                    {% for tournament in tournaments %}
                 </tr>
                 <tr>
-                    <td>{{ center.center_name }}</td>
-                    <td>{{ center.address }}</td>
-                    <td>{{ center.city }}</td>
-                    <td>{{ center.state }}</td>
-                    <td>{{ center.zip_code }}</td>
-                    <td>{{ center.phone_number }}</td>
+                    <td>{{ tournament.tournament_name }}</td>
+                    <td>{{ tournament.date }}</td>
+                    <td>{{ tournament.start_time }} {{tournament.start_time.tzinfo }}</td>
+                    <td>{{ tournament.bowling_center }}</td>
+                    <td>{{ tournament.tournament_director }}</td>
                 </tr>
                     {% endfor %}
             </tbody>
