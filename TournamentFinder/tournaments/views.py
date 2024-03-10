@@ -21,6 +21,12 @@ class BowlingCenterCreate(CreateView):
     template_name = 'tournaments/bowling_centers/center_create.html'
     success_url = reverse_lazy('list_bowling_centers')
 
+class BowlingCenterUpdate(UpdateView):
+    model = BowlingCenter
+    form_class = BowlingCenterUpdateForm
+    template_name = 'tournaments/bowling_centers/center_update.html'
+    success_url = reverse_lazy('list_bowling_centers')
+
 class TournamentDirectorList(ListView):
     model = TournamentDirector
     context_object_name = 'tournament_directors'
@@ -32,6 +38,12 @@ class TournamentDirectorCreate(CreateView):
     template_name = 'tournaments/tournament_directors/director_create.html'
     success_url = reverse_lazy('list_tournament_directors')
 
+class TournamentDirectorUpdate(UpdateView):
+    model = TournamentDirector
+    form_class = TournamentDirectorUpdateForm
+    template_name = 'tournaments/tournament_directors/director_update.html'
+    success_url = reverse_lazy('list_tournament_director')
+
 class TournamentList(ListView):
     model = Tournament
     context_object_name = 'tournaments'
@@ -41,4 +53,10 @@ class TournamentCreate(CreateView):
     model = Tournament
     form_class = TournamentCreateForm
     template_name = 'tournaments/tournament_create.html'
+    success_url = reverse_lazy('list_tournaments')
+
+class TournamentUpdate(UpdateView):
+    model = Tournament
+    form_class = TournamentUpdateForm
+    template_name = 'tournaments/tournament_update.html'
     success_url = reverse_lazy('list_tournaments')
