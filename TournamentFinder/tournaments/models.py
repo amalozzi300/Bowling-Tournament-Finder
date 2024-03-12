@@ -1,5 +1,6 @@
-from django.db import models
+import string as s
 
+from django.db import models
 from localflavor.us.models import USStateField, USZipCodeField
 from phonenumber_field.modelfields import PhoneNumberField
 
@@ -14,7 +15,7 @@ class BowlingCenter(models.Model):
     website = models.URLField(max_length=256, blank=True)
 
     def __str__(self):
-        return self.center_name.title()
+        return s.capwords(self.center_name, sep=' ')
     
     class Meta:
         verbose_name = 'Bowling Center'
@@ -28,7 +29,7 @@ class TournamentDirector(models.Model):
     profile_picture = models.ImageField(upload_to='profile_pictures', blank=True)
 
     def __str__(self):
-        return f'{self.first_name.title()} {self.last_name.title()}'
+        return f'{s.capwords(self.first_name)} {s.capwords(self.last_name)}'
     
     class Meta:
         verbose_name = 'Tournament Director'
@@ -43,7 +44,7 @@ class Tournament(models.Model):
     flyer = models.FileField(upload_to='tournament_flyers', blank=True)
 
     def __str__(self):
-        return self.tournament_name.title()
+        return s.capwords(self.tournament_name)
     
     class Meta:
         ordering = ['start_time']
