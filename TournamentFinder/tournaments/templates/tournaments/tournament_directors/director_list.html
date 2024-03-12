@@ -30,6 +30,10 @@
             #tournament-directors tbody tr:last-of-type {
                 border-bottom: 2px solid #009879;
             }
+            img {
+                height: 150px;
+                width: auto;
+            }
         </style>
     </head>
 
@@ -39,10 +43,12 @@
         <table id="tournament-directors">
             <thead>
                 <tr>
+                    <th></th>
                     <th>Name</th>
                     <th>Email Address</th>
                     <th>Phone Number</th>
-                    <th>Profile Picture</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -50,14 +56,16 @@
                     {% for director in tournament_directors %}
                 </tr>
                 <tr>
-                    <td>{{ director }}</td>
-                    <td>{{ director.email_address }}</td>
-                    <td>{{ director.phone_number }}</td>
                     <td>
                         {% if director.profile_picture %}
                         <img src='{{ director.profile_picture.url }}' />
                         {% endif %}
                     </td>
+                    <td>{{ director }}</td>
+                    <td>{{ director.email_address }}</td>
+                    <td>{{ director.phone_number }}</td>
+                    <td><a href="{% url 'update_director' director.id %}">Edit</a></td>
+                    <td></td>
                 </tr>
                     {% endfor %}
             </tbody>

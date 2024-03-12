@@ -46,6 +46,8 @@
                     <th>Zip Code</th>
                     <th>Phone Number</th>
                     <th>Center Website</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -60,6 +62,8 @@
                     <td>{{ center.zip_code }}</td>
                     <td>{{ center.phone_number }}</td>
                     <td><a href="{{ center.website }}" target="_blank">{{ center.website }}</a></td>
+                    <td><a href="{% url 'update_center' center.id %}">Edit</a></td>
+                    <td></td>
                 </tr>
                     {% endfor %}
             </tbody>

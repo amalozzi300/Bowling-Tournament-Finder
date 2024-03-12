@@ -45,6 +45,8 @@
                     <th>Tournament Director</th>
                     <th>Tournament Flyer</th>
                     <th>Tournament Website</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -68,6 +70,8 @@
                             {{ tournament.website }}
                         </a>
                     </td>
+                    <td><a href="{% url 'update_tournament' tournament.id %}">Edit</a></td>
+                    <td></td>
                 </tr>
                     {% endfor %}
             </tbody>
