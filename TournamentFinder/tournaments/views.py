@@ -11,7 +11,7 @@ from .forms import (
 )
 
 def home(request):
-    return HttpResponse("This is a response")
+    return render(request, 'tournaments/base.html')
 
 class BowlingCenterList(ListView):
     model = BowlingCenter
