@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import ListView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .models import BowlingCenter, TournamentDirector, Tournament
 from .forms import (
@@ -30,6 +30,12 @@ class BowlingCenterUpdate(UpdateView):
     template_name = 'tournaments/bowling_centers/center_update.html'
     success_url = reverse_lazy('list_centers')
 
+class BowlingCenterDelete(DeleteView):
+    model = BowlingCenter
+    context_object_name = 'center'
+    template_name = 'tournaments/bowling_centers/center_delete.html'
+    success_url = reverse_lazy('list_centers')
+
 class TournamentDirectorList(ListView):
     model = TournamentDirector
     context_object_name = 'tournament_directors'
@@ -47,6 +53,12 @@ class TournamentDirectorUpdate(UpdateView):
     template_name = 'tournaments/tournament_directors/director_update.html'
     success_url = reverse_lazy('list_directors')
 
+class TournamentDirectorDelete(DeleteView):
+    model = TournamentDirector
+    context_object_name = 'director'
+    template_name = 'tournaments/tournament_directors/director_delete.html'
+    success_url = reverse_lazy('list_directors')
+
 class TournamentList(ListView):
     model = Tournament
     context_object_name = 'tournaments'
@@ -62,4 +74,10 @@ class TournamentUpdate(UpdateView):
     model = Tournament
     form_class = TournamentUpdateForm
     template_name = 'tournaments/tournament_update.html'
+    success_url = reverse_lazy('list_tournaments')
+
+class TournamentDelete(DeleteView):
+    model = Tournament
+    context_object_name = 'tournament'
+    template_name = 'tournaments/tournament_delete.html'
     success_url = reverse_lazy('list_tournaments')

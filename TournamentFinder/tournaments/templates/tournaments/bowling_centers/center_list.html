@@ -63,7 +63,7 @@
                     <td>{{ center.phone_number }}</td>
                     <td><a href="{{ center.website }}" target="_blank">{{ center.website }}</a></td>
                     <td><a href="{% url 'update_center' center.id %}">Edit</a></td>
-                    <td></td>
+                    <td><a href="{% url 'delete_center' center.id %}">Delete</a></td>
                 </tr>
                     {% endfor %}
             </tbody>

@@ -65,7 +65,7 @@
                     <td>{{ director.email_address }}</td>
                     <td>{{ director.phone_number }}</td>
                     <td><a href="{% url 'update_director' director.id %}">Edit</a></td>
-                    <td></td>
+                    <td><a href="{% url 'delete_director' director.id %}">Delete</a></td>
                 </tr>
                     {% endfor %}
             </tbody>

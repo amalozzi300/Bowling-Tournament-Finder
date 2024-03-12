@@ -43,7 +43,7 @@ class Tournament(models.Model):
     flyer = models.FileField(upload_to='tournament_flyers', blank=True)
 
     def __str__(self):
-        return self.tournament_name
+        return self.tournament_name.title()
     
     class Meta:
         ordering = ['start_time']

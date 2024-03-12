@@ -71,7 +71,7 @@
                         </a>
                     </td>
                     <td><a href="{% url 'update_tournament' tournament.id %}">Edit</a></td>
-                    <td></td>
+                    <td><a href="{% url 'delete_tournament' tournament.id %}">Delete</a></td>
                 </tr>
                     {% endfor %}
             </tbody>
