@@ -5,7 +5,10 @@ from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView
 
 from .models import BowlingCenter, TournamentDirector, Tournament
-from .forms import BowlingCenterCreateForm, TournamentDirectorCreateForm, TournamentCreateForm
+from .forms import (
+    BowlingCenterCreateForm, TournamentDirectorCreateForm, TournamentCreateForm,
+    BowlingCenterUpdateForm, TournamentDirectorUpdateForm, TournamentUpdateForm,
+)
 
 def home(request):
     return HttpResponse("This is a response")
