@@ -15,7 +15,7 @@ class BowlingCenter(models.Model):
     website = models.URLField(max_length=256, blank=True)
 
     def __str__(self):
-        return s.capwords(self.center_name, sep=' ')
+        return f'{s.capwords(self.center_name, sep=" ")} - {s.capwords(self.city, sep=" ")}, {str(self.state)}'
     
     class Meta:
         verbose_name = 'Bowling Center'
