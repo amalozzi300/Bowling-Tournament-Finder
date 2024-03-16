@@ -40,7 +40,9 @@
     <body>
         <h1>Tournament Directors</h1>
         
+        {% if logged_in %}
         <h3><a href="{% url 'create_director' %}">Add a Tournament Director</a></h3>
+        {% endif %}
 
         <table id="tournament-directors">
             <thead>
@@ -66,8 +68,10 @@
                     <td>{{ director }}</td>
                     <td>{{ director.email_address }}</td>
                     <td>{{ director.phone_number }}</td>
+                    {% if logged_in %}
                     <td><a href="{% url 'update_director' director.id %}">Edit</a></td>
                     <td><a href="{% url 'delete_director' director.id %}">Delete</a></td>
+                    {% endif %}
                 </tr>
                     {% endfor %}
             </tbody>

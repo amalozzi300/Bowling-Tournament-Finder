@@ -6,17 +6,15 @@ from django.contrib.auth.models import AnonymousUser
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
-from .models import Member, BowlingCenter, TournamentDirector, Tournament
+from .utils import get_login_status
+from .models import BowlingCenter, TournamentDirector, Tournament
 from .forms import (
     BowlingCenterCreateForm, TournamentDirectorCreateForm, TournamentCreateForm,
     BowlingCenterUpdateForm, TournamentDirectorUpdateForm, TournamentUpdateForm,
 )
 
 def home(request):
-    if type(request.user) is AnonymousUser:
-        context = {'member': None, 'anonymous': True}
-    else:
-        context = {'member': Member.objects.get(user=request.user), 'anonymous': False}
+    context = {'logged_in': get_login_status(request)}
     return render(request, 'tournaments/base.html', context)
 
 def login_view(request):
@@ -29,9 +27,6 @@ def login_view(request):
 
         if user is not None:
             login(request, user)
-            member = Member.objects.get(user=user)
-            member.logged_in = True
-            member.save()
             return redirect('/')
         else:
             return HttpResponse('Invalid credentials!')
@@ -39,16 +34,18 @@ def login_view(request):
     return render(request, 'registration/login.html', context)
 
 def logout_view(request):
-    member = Member.objects.get(user=request.user)
-    member.logged_in = False
-    member.save()
     logout(request)
-    return render('/')
+    return redirect('/')
 
 class BowlingCenterList(ListView):
     model = BowlingCenter
     context_object_name = 'bowling_centers'
     template_name = 'tournaments/bowling_centers/center_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['logged_in'] = get_login_status(self.request)
+        return context
 
 class BowlingCenterCreate(CreateView):
     model = BowlingCenter
@@ -73,6 +70,11 @@ class TournamentDirectorList(ListView):
     context_object_name = 'tournament_directors'
     template_name = 'tournaments/tournament_directors/director_list.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['logged_in'] = get_login_status(self.request)
+        return context
+
 class TournamentDirectorCreate(CreateView):
     model = TournamentDirector
     form_class = TournamentDirectorCreateForm
@@ -95,6 +97,11 @@ class TournamentList(ListView):
     model = Tournament
     context_object_name = 'tournaments'
     template_name = 'tournaments/tournaments/tournament_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['logged_in'] = get_login_status(self.request)
+        return context
 
 class TournamentCreate(CreateView):
     model = Tournament

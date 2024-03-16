@@ -36,7 +36,9 @@
     <body>
         <h1>Bowling Centers</h1>
         
+        {% if logged_in %}
         <h3><a href="{% url 'create_center' %}">Add a Bowling Center</a></h3>
+        {% endif %}
 
         <table id="bowling-centers">
             <thead>
@@ -64,8 +66,10 @@
                     <td>{{ center.zip_code }}</td>
                     <td>{{ center.phone_number }}</td>
                     <td><a href="{{ center.website }}" target="_blank">{{ center.website }}</a></td>
+                    {% if logged_in %}
                     <td><a href="{% url 'update_center' center.id %}">Edit</a></td>
                     <td><a href="{% url 'delete_center' center.id %}">Delete</a></td>
+                    {% endif %}
                 </tr>
                     {% endfor %}
             </tbody>

@@ -6,13 +6,6 @@ from localflavor.us.models import USStateField, USZipCodeField
 from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
-class Member(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    logged_in = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.user.username
-
 class BowlingCenter(models.Model):
     center_name = models.CharField(max_length=64)
     address = models.CharField(max_length=128)

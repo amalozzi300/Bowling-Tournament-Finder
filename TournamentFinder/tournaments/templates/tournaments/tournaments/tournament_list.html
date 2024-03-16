@@ -36,7 +36,9 @@
     <body>
         <h1>Tournaments</h1>   
         
+        {% if logged_in %}
         <h3><a href="{% url 'create_tournament' %}">Add a Tournament</a></h3>
+        {% endif %}
 
         <table id="tournaments">
             <thead>
@@ -72,8 +74,10 @@
                             {{ tournament.website }}
                         </a>
                     </td>
+                    {% if logged_in %}
                     <td><a href="{% url 'update_tournament' tournament.id %}">Edit</a></td>
                     <td><a href="{% url 'delete_tournament' tournament.id %}">Delete</a></td>
+                    {% endif %}
                 </tr>
                     {% endfor %}
             </tbody>
