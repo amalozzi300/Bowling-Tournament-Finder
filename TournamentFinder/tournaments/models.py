@@ -1,10 +1,18 @@
-import string as s
-
 from django.db import models
+from django.contrib.auth.models import User
+
+import string as s
 from localflavor.us.models import USStateField, USZipCodeField
 from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
+class Member(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    logged_in = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.user.username
+
 class BowlingCenter(models.Model):
     center_name = models.CharField(max_length=64)
     address = models.CharField(max_length=128)
@@ -22,6 +30,7 @@ class BowlingCenter(models.Model):
         ordering = ['state', 'center_name']
 
 class TournamentDirector(models.Model):
+    director_user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     first_name = models.CharField(max_length=64)
     last_name = models.CharField(max_length=64)
     email_address = models.EmailField(max_length=128)

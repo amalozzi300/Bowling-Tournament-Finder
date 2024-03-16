@@ -1,17 +1,49 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.urls import reverse_lazy
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import AnonymousUser
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
-from .models import BowlingCenter, TournamentDirector, Tournament
+from .models import Member, BowlingCenter, TournamentDirector, Tournament
 from .forms import (
     BowlingCenterCreateForm, TournamentDirectorCreateForm, TournamentCreateForm,
     BowlingCenterUpdateForm, TournamentDirectorUpdateForm, TournamentUpdateForm,
 )
 
 def home(request):
-    return render(request, 'tournaments/base.html')
+    if type(request.user) is AnonymousUser:
+        context = {'member': None, 'anonymous': True}
+    else:
+        context = {'member': Member.objects.get(user=request.user), 'anonymous': False}
+    return render(request, 'tournaments/base.html', context)
+
+def login_view(request):
+    context = {'login_view': 'active'}
+
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            member = Member.objects.get(user=user)
+            member.logged_in = True
+            member.save()
+            return redirect('/')
+        else:
+            return HttpResponse('Invalid credentials!')
+        
+    return render(request, 'registration/login.html', context)
+
+def logout_view(request):
+    member = Member.objects.get(user=request.user)
+    member.logged_in = False
+    member.save()
+    logout(request)
+    return render('/')
 
 class BowlingCenterList(ListView):
     model = BowlingCenter
@@ -62,22 +94,22 @@ class TournamentDirectorDelete(DeleteView):
 class TournamentList(ListView):
     model = Tournament
     context_object_name = 'tournaments'
-    template_name = 'tournaments/tournament_list.html'
+    template_name = 'tournaments/tournaments/tournament_list.html'
 
 class TournamentCreate(CreateView):
     model = Tournament
     form_class = TournamentCreateForm
-    template_name = 'tournaments/tournament_create.html'
+    template_name = 'tournaments/tournaments/tournament_create.html'
     success_url = reverse_lazy('list_tournaments')
 
 class TournamentUpdate(UpdateView):
     model = Tournament
     form_class = TournamentUpdateForm
-    template_name = 'tournaments/tournament_update.html'
+    template_name = 'tournaments/tournaments/tournament_update.html'
     success_url = reverse_lazy('list_tournaments')
 
 class TournamentDelete(DeleteView):
     model = Tournament
     context_object_name = 'tournament'
-    template_name = 'tournaments/tournament_delete.html'
+    template_name = 'tournaments/tournaments/tournament_delete.html'
     success_url = reverse_lazy('list_tournaments')
