@@ -1,6 +1,6 @@
 pip==24.0
 
-django==5.0.2
+django==4.2
 django-bootstrap-v5==1.0.11
 django-localflavor==4.0
 django-phonenumber-field[phonenumberslite]==7.3.0
