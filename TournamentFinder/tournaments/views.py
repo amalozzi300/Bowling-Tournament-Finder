@@ -15,6 +15,7 @@ from .forms import (
 
 def home(request):
     context = {'logged_in': get_login_status(request)}
+    return redirect('/tournaments')
     return render(request, 'tournaments/base.html', context)
 
 def login_view(request):
