@@ -1,44 +1,17 @@
-{% extends "base.html" %}
+{% extends "layout.html" %}
 
-{% block head %}
+{% block title %}
     <title>Tournaments</title>
-    <style>
-        #tournaments {
-            border-collapse: collapse;
-            margin: 25px 0;
-            font-size: 0.9em;
-            font-family: sans-serif;
-            text-align: center;
-            min-width: 400px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-        }
-        #tournaments thead tr {
-            background-color: #009879;
-            color: #ffffff;
-        }
-        #tournaments th, #tournaments td {
-            padding: 12px 15px;
-        }
-        #tournaments tbody tr {
-            border-bottom: 1px solid #ddd;
-        }
-        #tournaments tbody tr:nth-of-type(even) {
-            background-color: #f3f3f3;
-        }
-        #tournaments tbody tr:last-of-type {
-            border-bottom: 2px solid #009879;
-        }
-    </style>
-{% endblock head %}
+{% endblock title%}
 
 {% block content %}
     <h1>Tournaments</h1>   
     
     {% if logged_in %}
-    <h3><a href="{% url 'create_tournament' %}">Add a Tournament</a></h3>
+        <a href="{% url 'create_tournament' %}">Add a Tournament</a>
     {% endif %}
 
-    <table id="tournaments">
+    <table class='table table-hover table-bordered border-dark text-center align-middle' id="tournaments">
         <thead>
             <tr>
                 <th>Name</th>
@@ -48,38 +21,36 @@
                 <th>Tournament Flyer</th>
                 <th>Tournament Website</th>
                 {% if logged_in %}
-                <th></th>
-                <th></th>
+                    <th></th>
+                    <th></th>
                 {% endif %}
             </tr>
         </thead>
         <tbody>
-            <tr>
-                {% for tournament in tournaments %}
-            </tr>
-            <tr>
-                <td>{{ tournament }}</td>
-                <td>{{ tournament.start_time }}</td>
-                <td>{{ tournament.bowling_center }}</td>
-                <td>{{ tournament.tournament_director }}</td>
-                <td>
-                    {% if tournament.flyer %}
-                    <a href="{{ tournament.flyer.url }}" target="_blank">
-                        Click Here
-                    </a>
+            {% for tournament in tournaments %}
+                <tr>
+                    <td>{{ tournament }}</td>
+                    <td>{{ tournament.start_time }}</td>
+                    <td>{{ tournament.bowling_center }}</td>
+                    <td>{{ tournament.tournament_director }}</td>
+                    <td>
+                        {% if tournament.flyer %}
+                            <a href="{{ tournament.flyer.url }}" target="_blank">
+                                Click Here
+                            </a>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{{ tournament.website }}" target="_blank">
+                            {{ tournament.website }}
+                        </a>
+                    </td>
+                    {% if logged_in %}
+                        <td><a href="{% url 'update_tournament' tournament.id %}">Edit</a></td>
+                        <td><a href="{% url 'delete_tournament' tournament.id %}">Delete</a></td>
                     {% endif %}
-                </td>
-                <td>
-                    <a href="{{ tournament.website }}" target="_blank">
-                        {{ tournament.website }}
-                    </a>
-                </td>
-                {% if logged_in %}
-                <td><a href="{% url 'update_tournament' tournament.id %}">Edit</a></td>
-                <td><a href="{% url 'delete_tournament' tournament.id %}">Delete</a></td>
-                {% endif %}
-            </tr>
-                {% endfor %}
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 {% endblock content %}
