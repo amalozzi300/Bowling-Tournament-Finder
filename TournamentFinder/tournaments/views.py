@@ -41,7 +41,7 @@ def logout_view(request):
 class BowlingCenterList(ListView):
     model = BowlingCenter
     context_object_name = 'bowling_centers'
-    template_name = 'tournaments/bowling_centers/center_list.html'
+    template_name = 'tournaments/list_centers.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -51,25 +51,31 @@ class BowlingCenterList(ListView):
 class BowlingCenterCreate(LoginRequiredMixin, CreateView):
     model = BowlingCenter
     form_class = BowlingCenterCreateForm
-    template_name = 'tournaments/bowling_centers/center_create.html'
+    template_name = 'tournaments/generic_model_create.html'
     success_url = reverse_lazy('list_centers')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['model_name'] = 'Bowling Center'
+        return context
 
 class BowlingCenterUpdate(LoginRequiredMixin, UpdateView):
     model = BowlingCenter
     form_class = BowlingCenterUpdateForm
-    template_name = 'tournaments/bowling_centers/center_update.html'
+    context_object_name = 'object'
+    template_name = 'tournaments/generic_model_update.html'
     success_url = reverse_lazy('list_centers')
 
 class BowlingCenterDelete(LoginRequiredMixin, DeleteView):
     model = BowlingCenter
-    context_object_name = 'center'
-    template_name = 'tournaments/bowling_centers/center_delete.html'
+    context_object_name = 'object'
+    template_name = 'tournaments/generic_model_delete.html'
     success_url = reverse_lazy('list_centers')
 
 class TournamentDirectorList(ListView):
     model = TournamentDirector
     context_object_name = 'tournament_directors'
-    template_name = 'tournaments/tournament_directors/director_list.html'
+    template_name = 'tournaments/list_directors.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -79,25 +85,31 @@ class TournamentDirectorList(ListView):
 class TournamentDirectorCreate(LoginRequiredMixin, CreateView):
     model = TournamentDirector
     form_class = TournamentDirectorCreateForm
-    template_name = 'tournaments/tournament_directors/director_create.html'
+    template_name = 'tournaments/generic_model_create.html'
     success_url = reverse_lazy('list_directors')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['model_name'] = 'Tournament Director'
+        return context
 
 class TournamentDirectorUpdate(LoginRequiredMixin, UpdateView):
     model = TournamentDirector
     form_class = TournamentDirectorUpdateForm
-    template_name = 'tournaments/tournament_directors/director_update.html'
+    context_object_name = 'object'
+    template_name = 'tournaments/generic_model_update.html'
     success_url = reverse_lazy('list_directors')
 
 class TournamentDirectorDelete(LoginRequiredMixin, DeleteView):
     model = TournamentDirector
-    context_object_name = 'director'
-    template_name = 'tournaments/tournament_directors/director_delete.html'
+    context_object_name = 'object'
+    template_name = 'tournaments/generic_model_delete.html'
     success_url = reverse_lazy('list_directors')
 
 class TournamentList(ListView):
     model = Tournament
     context_object_name = 'tournaments'
-    template_name = 'tournaments/tournaments/tournament_list.html'
+    template_name = 'tournaments/list_tournaments.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -107,17 +119,23 @@ class TournamentList(ListView):
 class TournamentCreate(LoginRequiredMixin, CreateView):
     model = Tournament
     form_class = TournamentCreateForm
-    template_name = 'tournaments/tournaments/tournament_create.html'
+    template_name = 'tournaments/generic_model_create.html'
     success_url = reverse_lazy('list_tournaments')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['model_name'] = 'Tournament'
+        return context
 
 class TournamentUpdate(LoginRequiredMixin, UpdateView):
     model = Tournament
     form_class = TournamentUpdateForm
-    template_name = 'tournaments/tournaments/tournament_update.html'
+    context_object_name = 'object'
+    template_name = 'tournaments/generic_model_update.html'
     success_url = reverse_lazy('list_tournaments')
 
 class TournamentDelete(LoginRequiredMixin, DeleteView):
     model = Tournament
-    context_object_name = 'tournament'
-    template_name = 'tournaments/tournaments/tournament_delete.html'
+    context_object_name = 'object'
+    template_name = 'tournaments/generic_model_delete.html'
     success_url = reverse_lazy('list_tournaments')

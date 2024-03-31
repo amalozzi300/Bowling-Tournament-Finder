@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    <title>Confirm Deletion -- {{ object }}</title>
+{% endblock title %}
+
+{% block content %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        
+        <p>Are you sure you want to delete "{{ object }}"?</p>
+        <input type="submit" value="Confirm">
+    </form>
+{% endblock content %}
