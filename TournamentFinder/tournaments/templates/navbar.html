@@ -1,17 +1,15 @@
     {% load static %}
     
     {% comment %} <nav class="navbar navbar-expand-sm justify-content-center bg-dark navbar-dark"> {% endcomment %}
-    <nav class="navbar navbar-expand-sm align-middle">
+    <nav class="navbar navbar-expand-sm align-text-center">
         {% comment %} Logo and Branding {% endcomment %}
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#!">
-                <img src="{% static 'images/bm-logo.png' %}" alt="Bowling Mafia logo" width="50" height="50" class="d-inline-block align-text-center">
-                Bowling Mafia
-            </a>
-        </div>
+        <a class="navbar-brand d-inline-block" href="#!">
+            <img src="{% static 'images/bm-logo.png' %}" alt="Bowling Mafia logo" width="175" height="150" class="d-inline-block align-text-center">
+            Bowling Mafia
+        </a>
 
         {% comment %} Links {% endcomment %}
-        <ul class="navbar-nav">
+        <ul class="navbar-nav text-end">
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'list_tournaments' %}">Tournaments</a>
             </li>
