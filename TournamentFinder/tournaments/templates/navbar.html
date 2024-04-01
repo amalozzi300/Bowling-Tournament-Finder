@@ -1,21 +1,32 @@
-<nav class="navbar navbar-expand-sm justify-content-center bg-dark navbar-dark">
-    <!-- Links -->
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'list_tournaments' %}">Tournaments</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'list_centers' %}">Bowling Centers</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'list_directors' %}">Tournament Directors</a>
-        </li>
-        <li class="nav-item">
-            {% if not logged_in %}
-                <a class="nav-link" href="{% url 'login' %}">Login</a>
-            {% else %}
-                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-            {% endif %}
-        </li>
-    </ul>
-</nav>
+    {% load static %}
+    
+    {% comment %} <nav class="navbar navbar-expand-sm justify-content-center bg-dark navbar-dark"> {% endcomment %}
+    <nav class="navbar navbar-expand-sm align-middle">
+        {% comment %} Logo and Branding {% endcomment %}
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#!">
+                <img src="{% static 'images/bm-logo.png' %}" alt="Bowling Mafia logo" width="50" height="50" class="d-inline-block align-text-center">
+                Bowling Mafia
+            </a>
+        </div>
+
+        {% comment %} Links {% endcomment %}
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'list_tournaments' %}">Tournaments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'list_centers' %}">Bowling Centers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'list_directors' %}">Tournament Directors</a>
+            </li>
+            <li class="nav-item">
+                {% if not logged_in %}
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                {% else %}
+                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                {% endif %}
+            </li>
+        </ul>
+    </nav>
