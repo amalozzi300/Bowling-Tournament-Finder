@@ -1,17 +1,17 @@
-{% extends "base/layout.html" %}
+{% extends 'base/layout.html' %}
 
 {% block title %}
     <title>Bowling Centers</title>
 {% endblock title %}
 
 {% block content %}
-    <h1>Bowling Centers</h1>
+    <h1 class="model-table-name">Bowling Centers</h1>
             
     {% if logged_in %}
         <a href="{% url 'create_center' %}">Add a Bowling Center</a>
     {% endif %}
 
-    <table class='table table-hover table-bordered border-dark text-center align-middle' id="bowling-centers">
+    <table class="model-table">
         <thead>
             <tr>
                 <th>Center Name</th>

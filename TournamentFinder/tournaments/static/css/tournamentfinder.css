@@ -10,40 +10,37 @@ body {
     color: white;
 }
 
-.inline {
-    display: inline;
-}
-
 /* Header Banner */
 header {
     background-image: linear-gradient(rgb(207, 63, 54), black, darkgrey, black, rgb(207, 63, 54));
     display: flex;
-    align-items: center;
+    align-items: center;        /* vertical */
+    justify-content: center;    /* horizontal */
 }
 
 header img {
     width: auto;
     max-height: 170px;
-    margin: 5px;
+    margin: 0 10px;
 }
 
 header h1 {
     color: black;
     font-family: 'Protest Revolution';
     font-size: 50px;
-    margin: 5px;
+    margin-left: 25px;
+    margin-right: 25px;
 }
 
 /* Navigation Bar */
 nav {
     border-bottom: 3px solid rgb(207, 63, 54);
+    text-align: center;
     position: sticky;
-    height: fit-content;
 }
 
 nav ul {
     list-style-type: none;
-    margin: 0;
     padding: 14px 0;
 }
 
@@ -67,6 +64,42 @@ a.nav-link.active {
 a.nav-link:hover {
     padding-bottom: 15px;
     background-color: rgb(207, 63, 54);
+}
+
+/* Model Tables */
+
+h1.model-table-name {
+    font-size: 40px;
+    text-decoration: underline;
+    text-align: center;
+    padding: 14px 0;
+    margin-top: 10px;
+}
+
+table.model-table {
+    font-size: 20px;
+    text-align: center;
+    border-collapse: collapse;
+    justify-content: center;
+    width: 98%;
+    padding: 5px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table.model-table, .model-table th, .model-table td {
+    border: 3px solid rgb(207, 63, 54);
+    vertical-align: middle;
+    height: 40px;
+}
+
+.model-table thead {
+    border-bottom: 6px double rgb(207, 63, 54);
+}
+
+.model-table th {
+    font-size: 23px;
 }
 
 /* Bootstrap Overrides */
