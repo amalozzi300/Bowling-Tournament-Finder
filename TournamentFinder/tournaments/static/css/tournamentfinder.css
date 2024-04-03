@@ -10,6 +10,10 @@ body {
     color: white;
 }
 
+a {
+    color: white;
+}
+
 /* Header Banner */
 header {
     background-image: linear-gradient(rgb(207, 63, 54), black, darkgrey, black, rgb(207, 63, 54));
@@ -50,10 +54,8 @@ nav ul {
 }
 
 .nav-link {
-    color: white;
     font-size: 20px;
     text-align: center;
-    height: fit-content;
     padding: 14px 16px;
 }
 
@@ -101,19 +103,3 @@ table.model-table, .model-table th, .model-table td {
 .model-table th {
     font-size: 23px;
 }
-
-/* Bootstrap Overrides */
-/* table, thead, tbody, tr, th, td {
-    background-color: black !important;
-    color: white !important;
-}
-
-nav.navbar {
-    background-color: black;
-    border-top: rgb(207, 63, 54) !important;
-    border-bottom: rgb(207, 63, 54) !important;
-}
-
-.nav-item {
-    color: white !important;
-} */
