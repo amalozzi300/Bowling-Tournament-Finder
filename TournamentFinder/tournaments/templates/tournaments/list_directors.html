@@ -1,20 +1,20 @@
-{% extends "base/layout.html" %}
+{% extends 'base/layout.html' %}
 
 {% block title %}
     <title>Tournament Directors</title>
 {% endblock title %}
 
 {% block content %}
-    <h1>Tournament Directors</h1>
+    <h1 class="model-table-name">Tournament Directors</h1>
             
     {% if logged_in %}
         <a href="{% url 'create_director' %}">Add a Tournament Director</a>
     {% endif %}
 
-    <table class='table table-hover table-bordered border-dark text-center align-middle' id="tournament-directors">
+    <table class="model-table">
         <thead>
             <tr>
-                <th>Profile Picture</th>
+                <!-- <th>Profile Picture</th> -->
                 <th>Name</th>
                 <th>Email Address</th>
                 <th>Phone Number</th>
@@ -26,11 +26,11 @@
         <tbody>
             {% for director in tournament_directors %}
                 <tr>
-                    <td>
+                    <!-- <td>
                         {% if director.profile_picture %}
                             <img src='{{ director.profile_picture.url }}' />
                         {% endif %}
-                    </td>
+                    </td> -->
                     <td>{{ director }}</td>
                     <td>{{ director.email_address }}</td>
                     <td>{{ director.phone_number }}</td>
