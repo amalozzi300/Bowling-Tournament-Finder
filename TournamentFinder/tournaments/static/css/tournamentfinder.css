@@ -1,0 +1,86 @@
+/* General */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+.inline {
+    display: inline;
+}
+
+/* Header Banner */
+header {
+    background-image: linear-gradient(rgb(207, 63, 54), black, darkgrey, black, rgb(207, 63, 54));
+    display: flex;
+    align-items: center;
+}
+
+header img {
+    width: auto;
+    max-height: 170px;
+    margin: 5px;
+}
+
+header h1 {
+    color: black;
+    font-family: 'Protest Revolution';
+    font-size: 50px;
+    margin: 5px;
+}
+
+/* Navigation Bar */
+nav {
+    border-bottom: 3px solid rgb(207, 63, 54);
+    position: sticky;
+    height: fit-content;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 14px 0;
+}
+
+.nav-item {
+    display: inline;
+    padding: 14px 0;
+}
+
+.nav-link {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    height: fit-content;
+    padding: 14px 16px;
+}
+
+a.nav-link.active {
+    background-color: rgb(25,25,25);
+}
+
+a.nav-link:hover {
+    padding-bottom: 15px;
+    background-color: rgb(207, 63, 54);
+}
+
+/* Bootstrap Overrides */
+/* table, thead, tbody, tr, th, td {
+    background-color: black !important;
+    color: white !important;
+}
+
+nav.navbar {
+    background-color: black;
+    border-top: rgb(207, 63, 54) !important;
+    border-bottom: rgb(207, 63, 54) !important;
+}
+
+.nav-item {
+    color: white !important;
+} */

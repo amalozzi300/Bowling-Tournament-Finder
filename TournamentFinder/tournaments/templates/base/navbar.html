@@ -1,30 +1,32 @@
-    {% load static %}
-    
-    {% comment %} <nav class="navbar navbar-expand-sm justify-content-center bg-dark navbar-dark"> {% endcomment %}
-    <nav class="navbar navbar-expand-sm align-text-center">
-        {% comment %} Logo and Branding {% endcomment %}
-        <a class="navbar-brand d-inline-block" href="#!">
-            <img src="{% static 'images/bm-logo.png' %}" alt="Bowling Mafia logo" width="175" height="150" class="d-inline-block align-text-center">
-            Bowling Mafia
-        </a>
+{% url 'list_tournaments' as list_tournaments %}
+{% url 'list_centers' as list_centers %}
+{% url 'list_directors' as list_directors %}
+{% url 'login' as login %}
 
-        {% comment %} Links {% endcomment %}
-        <ul class="navbar-nav text-end">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'list_tournaments' %}">Tournaments</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'list_centers' %}">Bowling Centers</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'list_directors' %}">Tournament Directors</a>
-            </li>
-            <li class="nav-item">
-                {% if not logged_in %}
-                    <a class="nav-link" href="{% url 'login' %}">Login</a>
-                {% else %}
-                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-                {% endif %}
-            </li>
-        </ul>
-    </nav>
+<nav>
+    {% comment %} Links {% endcomment %}
+    <ul>
+        <li class="nav-item">
+            <a class="nav-link {% if request.get_full_path == list_tournaments %}active{% endif %}" href="{% url 'list_tournaments' %}">
+                Tournaments
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if request.get_full_path == list_centers %}active{% endif %}" href="{% url 'list_centers' %}">
+                Bowling Centers
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if request.get_full_path == list_directors %}active{% endif %}" href="{% url 'list_directors' %}">
+                Tournament Directors
+            </a>
+        </li>
+        <li class="nav-item">
+            {% if not logged_in %}
+                <a class="nav-link {% if request.get_full_path == login %}active{% endif %}" href="{% url 'login' %}">Login</a>
+            {% else %}
+                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+            {% endif %}
+        </li>
+    </ul>
+</nav>
