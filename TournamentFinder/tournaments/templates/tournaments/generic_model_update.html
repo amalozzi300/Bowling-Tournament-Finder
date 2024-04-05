@@ -5,8 +5,8 @@
 {% endblock title %}
 
 {% block content %}
-    <h1>Edit {{ object }}</h1>
-    <form action="" method="POST" enctype="multipart/form-data">
+    <h1 class="model-form-header">Update "{{ object }}"</h1>
+    <form class="model-form" action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         
         {{ form.as_p }}

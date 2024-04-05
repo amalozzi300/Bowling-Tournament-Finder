@@ -115,10 +115,42 @@ table.model-table, .model-table th, .model-table td {
 }
 
 /* Model Forms */
-h1.model-create-header {
+h1.model-form-header {
     font-family: 'Protest Revolution';
     font-size: 40px;
     text-align: center;
     padding: 14px 0;
     margin-top: 10px;
+}
+
+.model-form {
+    font-size: 25px;
+    text-align: center;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3px;
+}
+
+.model-form *{
+    display: inline-block;
+    vertical-align: middle;
+    padding: 7px 0;
+}
+
+.model-form p {
+    margin: 10px 5px;
+}
+
+.model-form input, .model-form select {
+    font-size: 18px;
+    vertical-align: text-top;
+    padding: 5px;
+}
+
+.model-form input[type=submit] {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
 }
