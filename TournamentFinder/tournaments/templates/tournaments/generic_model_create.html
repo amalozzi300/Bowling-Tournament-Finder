@@ -5,8 +5,8 @@
 {% endblock title %}
 
 {% block content %}
-    <h1>Register a New {{ model_name }}</h1>
-    <form action="" method="POST" enctype="multipart/form-data">
+    <h1 class="model-create-header">Register a New {{ model_name }}</h1>
+    <form class="model-create" action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         
         {{ form.as_p }}

@@ -69,8 +69,7 @@ a.nav-link:hover {
 }
 
 /* Model Tables */
-
-h1.model-table-name {
+h1.model-table-header {
     font-family: 'Protest Revolution';
     font-size: 40px;
     text-align: center;
@@ -113,4 +112,13 @@ table.model-table, .model-table th, .model-table td {
 
 .model-table th {
     font-size: 23px;
+}
+
+/* Model Forms */
+h1.model-create-header {
+    font-family: 'Protest Revolution';
+    font-size: 40px;
+    text-align: center;
+    padding: 14px 0;
+    margin-top: 10px;
 }
