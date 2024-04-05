@@ -78,6 +78,17 @@ h1.model-table-name {
     margin-top: 10px;
 }
 
+#center {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+a.add-link {
+    font-size: 20px;
+    text-align: center;
+    vertical-align: middle;
+}
+
 table.model-table {
     font-size: 20px;
     text-align: center;

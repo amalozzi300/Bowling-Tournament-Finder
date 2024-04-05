@@ -8,7 +8,9 @@
     <h1 class="model-table-name">Tournament Directors</h1>
             
     {% if logged_in %}
-        <a href="{% url 'create_director' %}">Add a Tournament Director</a>
+        <div id="center">
+            <a class="add-link" href="{% url 'create_director' %}">Register a Tournament Director</a>
+        </div>
     {% endif %}
 
     <table class="model-table">
