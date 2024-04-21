@@ -40,9 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # extra installed apps:
     'localflavor',
     'phonenumber_field',
-    'tournaments.apps.TournamentsConfig',
+    # custom apps:
+    'tournamentfinder',
 ]
 
 MIDDLEWARE = [
